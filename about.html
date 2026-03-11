@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About – Professor Castro's Nursing Hub</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-hero { background: linear-gradient(135deg, #0D2144 0%, #1A2744 100%); }
+  .value-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap:18px; margin-top:28px; }
+  .value-card { background:var(--white); border-radius:14px; padding:22px; box-shadow:var(--card-shadow); }
+  .value-icon { font-size:28px; margin-bottom:10px; }
+  .value-title { font-weight:800; color:var(--navy); font-size:15px; margin-bottom:6px; }
+  .value-text { color:var(--warm-gray); font-size:13.5px; line-height:1.65; }
+  .timeline { display:grid; gap:0; position:relative; }
+  .timeline::before { content:''; position:absolute; left:20px; top:0; bottom:0; width:2px; background:var(--light); }
+  .timeline-item { display:grid; grid-template-columns:44px 1fr; gap:16px; padding:0 0 28px; position:relative; }
+  .timeline-dot { width:44px; height:44px; border-radius:50%; background:var(--teal); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; position:relative; z-index:1; }
+  .timeline-content { padding-top:8px; }
+  .timeline-year { font-size:11px; font-weight:800; color:var(--teal); letter-spacing:1px; margin-bottom:3px; }
+  .timeline-title { font-weight:700; color:var(--navy); font-size:15px; margin-bottom:4px; }
+  .timeline-desc { color:var(--warm-gray); font-size:13.5px; line-height:1.6; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Professor Castro's <span>Nursing Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="nurs0106.html">NURS-0106</a>
+    <a href="nurs0108.html">NURS-0108</a>
+    <a href="nurs0243.html">NURS-0243</a>
+    <a href="nupn0200.html">NUPN-0200</a>
+    <a href="about.html" class="active">About</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <p style="color:rgba(255,255,255,0.6); font-size:12px; letter-spacing:2px; font-weight:700; text-transform:uppercase; margin-bottom:12px;">Meet Your Professor</p>
+  <h1>Hallie Stephen-Castro</h1>
+  <p>MSN · MBA · RN · Nursing Educator · Nurse since 1999</p>
+</div>
+
+<!-- ABOUT SECTION -->
+<div class="about-strip" style="padding:64px 32px;">
+  <div class="about-inner">
+    <div class="about-avatar" style="width:150px; height:150px; font-size:64px;">👩‍⚕️</div>
+    <div>
+      <div class="about-name">Hallie Stephen-Castro</div>
+      <div class="about-creds">MSN in Nurse Administration · MBA in Healthcare · Registered Nurse</div>
+      <p class="about-bio">
+        I've been a nurse since 1999 and a nursing educator at Kansas City Kansas Community College since 2013. Over more than two decades at the bedside and over a decade in the classroom, I've learned one thing above all else: <strong style="color:var(--white)">the best nursing education meets students where they are.</strong>
+      </p>
+      <p class="about-bio">
+        This website exists because I believe you deserve resources that are clear, accessible, clinically meaningful, and available whenever you need them — not just during office hours. Whether you're in one of my courses or found your way here from YouTube, you're welcome here.
+      </p>
+      <div class="contact-pills">
+        <a href="mailto:hstephencastro@kckcc.edu" class="contact-pill">✉️ hstephencastro@kckcc.edu</a>
+        <a href="tel:9132887352" class="contact-pill">📞 913-288-7352</a>
+        <span class="contact-pill">📍 Room 3715, KCKCC</span>
+        <a href="https://youtube.com" target="_blank" class="contact-pill">▶️ YouTube Channel</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VALUES -->
+<section class="section">
+  <div class="section-label">Teaching Philosophy</div>
+  <h2 class="section-title">What I Believe About Nursing Education</h2>
+  <p class="section-sub">These aren't just words on a page — they're why I built this site and why I teach the way I do.</p>
+
+  <div class="value-grid">
+    <div class="value-card">
+      <div class="value-icon">🧠</div>
+      <div class="value-title">Clinical Judgment Over Memorization</div>
+      <div class="value-text">Facts fade. Thinking frameworks last. I build every course around the CJMM because safe nurses think systematically, not just recall answers.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">💙</div>
+      <div class="value-title">You Belong Here</div>
+      <div class="value-text">Nursing school is designed to be hard — not to weed people out, but to prepare you for real stakes. If you're struggling, that's not a sign you don't belong. It's a sign you're doing the work.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🔗</div>
+      <div class="value-title">Connect Content to Patients</div>
+      <div class="value-text">Every drug interaction, every lab value, every pathophysiology concept connects to a real patient. When students understand WHY, the WHAT becomes memorable.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🚪</div>
+      <div class="value-title">Open Door, Always</div>
+      <div class="value-text">A student who is confused but doesn't ask is more at risk than one who speaks up. I mean it when I say no question is too small — and no email goes unanswered.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">📈</div>
+      <div class="value-title">Evidence-Based Teaching</div>
+      <div class="value-text">I update my materials constantly to reflect current guidelines, current NCLEX formats, and current clinical practice. What I teach, you will use at the bedside.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-icon">🌍</div>
+      <div class="value-title">Resources for Everyone</div>
+      <div class="value-text">This site is free, public, and available to any nursing student anywhere. If something I built helps a student I've never met pass their NCLEX, that's a win.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section" style="padding-top:0;">
+  <div class="section-label">Background & Experience</div>
+  <h2 class="section-title" style="margin-bottom:32px;">Career Journey</h2>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot">🩺</div>
+      <div class="timeline-content">
+        <div class="timeline-year">1999</div>
+        <div class="timeline-title">Began Nursing Career</div>
+        <div class="timeline-desc">Started practice as a Registered Nurse — over 25 years of clinical experience across multiple specialties.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🎓</div>
+      <div class="timeline-content">
+        <div class="timeline-year">Graduate Education</div>
+        <div class="timeline-title">MSN & MBA — University of Mary</div>
+        <div class="timeline-desc">Master of Science in Nursing (Nurse Administration) and Master of Business Administration in Healthcare — preparing for leadership in both clinical and academic settings.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">🏫</div>
+      <div class="timeline-content">
+        <div class="timeline-year">2013</div>
+        <div class="timeline-title">Joined KCKCC Faculty</div>
+        <div class="timeline-desc">Began full-time nursing faculty role at Kansas City Kansas Community College — teaching pharmacology, complex nursing concepts, and clinical judgment.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">📋</div>
+      <div class="timeline-content">
+        <div class="timeline-year">Ongoing</div>
+        <div class="timeline-title">Committee Leadership</div>
+        <div class="timeline-desc">Active on Curriculum Committee, Online Education Committee, Executive Council, Learning Spaces Task Force, and serves as Concept-Based Education Resource for the nursing program.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot">💻</div>
+      <div class="timeline-content">
+        <div class="timeline-year">Now</div>
+        <div class="timeline-title">This Website</div>
+        <div class="timeline-desc">Building a free, public resource hub for nursing students everywhere — because great nursing education shouldn't stop at the classroom door.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES QUICK LINKS -->
+<section class="section" style="padding-top:0;">
+  <div class="section-label">Current Courses</div>
+  <h2 class="section-title" style="margin-bottom:24px;">Find Your Course Page</h2>
+  <div class="card-grid">
+    <a href="nurs0106.html" class="card">
+      <span class="card-icon">💊</span>
+      <div class="card-title">NURS-0106 Pharmacology I</div>
+      <div class="card-arrow">Go to course →</div>
+    </a>
+    <a href="nurs0108.html" class="card">
+      <span class="card-icon">🩺</span>
+      <div class="card-title">NURS-0108 Pharmacology III</div>
+      <div class="card-arrow">Go to course →</div>
+    </a>
+    <a href="nurs0243.html" class="card">
+      <span class="card-icon">🧠</span>
+      <div class="card-title">NURS-0243 Complex Nursing Concepts</div>
+      <div class="card-arrow">Go to course →</div>
+    </a>
+    <a href="nupn0200.html" class="card">
+      <span class="card-icon">⚖️</span>
+      <div class="card-title">NUPN-0200 Clinical Judgment</div>
+      <div class="card-arrow">Go to course →</div>
+    </a>
+  </div>
+</section>
+
+<div class="encourage-banner">
+  <h2>To Every Student Who Found This Page 💙</h2>
+  <p>You chose one of the most demanding and most meaningful professions in the world. I'm honored to be part of your journey. Now let's get to work.</p>
+</div>
+
+<footer>
+  <p>Professor Castro's Nursing Student Hub &nbsp;·&nbsp; Kansas City Kansas Community College</p>
+  <p>Room 3715 &nbsp;·&nbsp; <a href="mailto:hstephencastro@kckcc.edu">hstephencastro@kckcc.edu</a> &nbsp;·&nbsp; 913-288-7352</p>
+  <p style="margin-top:8px; font-size:11px;">Built with ❤️ for nursing students everywhere.</p>
+</footer>
+
+</body>
+</html>

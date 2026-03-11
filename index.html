@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Professor Castro's Nursing Student Hub</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .stats-bar {
+    background: var(--white);
+    border-bottom: 1px solid #E8EEF4;
+    padding: 14px 32px;
+  }
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--warm-gray);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .youtube-strip {
+    background: #FFF8F0;
+    border-top: 3px solid var(--gold);
+  }
+  .yt-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 52px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+  }
+  .yt-icon { font-size: 48px; margin-bottom: 12px; display: block; }
+  .yt-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .yt-desc { color: var(--warm-gray); font-size: 14.5px; line-height: 1.7; max-width: 500px; }
+  .btn-youtube {
+    background: #FF0000;
+    color: var(--white);
+    padding: 13px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    transition: all 0.25s;
+    flex-shrink: 0;
+  }
+  .btn-youtube:hover {
+    background: #CC0000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255,0,0,0.3);
+  }
+  @media (max-width: 680px) {
+    .yt-inner { grid-template-columns: 1fr; }
+    .btn-youtube { width: fit-content; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-brand">Professor Castro's <span>Nursing Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="nurs0106.html">NURS-0106</a>
+    <a href="nurs0108.html">NURS-0108</a>
+    <a href="nurs0243.html">NURS-0243</a>
+    <a href="nupn0200.html">NUPN-0200</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Kansas City Kansas Community College</div>
+  <h1 class="fade-up fade-up-1">Welcome to Your <em>Nursing</em> Student Hub</h1>
+  <p class="fade-up fade-up-2">
+    Everything you need to succeed — course materials, interactive study tools, handouts, and video resources — all in one place, always free.
+  </p>
+  <div class="hero-btns fade-up fade-up-3">
+    <a href="#courses" class="btn-primary">📚 Find My Course</a>
+    <a href="about.html" class="btn-outline">Meet Professor Castro</a>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Courses</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">25+</div>
+      <div class="stat-label">Years Nursing Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">MSN · MBA</div>
+      <div class="stat-label">Credentials</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">Free</div>
+      <div class="stat-label">Always & Forever</div>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES -->
+<section class="section" id="courses">
+  <div class="section-label">Find Your Class</div>
+  <h2 class="section-title">Course Resource Pages</h2>
+  <p class="section-sub">Click your course below to find handouts, study tools, presentations, and weekly materials.</p>
+
+  <div class="card-grid">
+    <a href="nurs0106.html" class="card fade-up fade-up-1" style="--accent:#0A8A7A">
+      <span class="card-icon">💊</span>
+      <div class="card-title">Pharmacology I</div>
+      <div class="card-desc">Foundations of drug therapy, pharmacokinetics, drug classifications, and clinical application for nursing practice.</div>
+      <div>
+        <span class="card-tag">NURS-0106</span>
+        <span class="card-tag">ADN Program</span>
+      </div>
+      <div class="card-arrow">Go to course →</div>
+    </a>
+
+    <a href="nurs0108.html" class="card fade-up fade-up-2">
+      <span class="card-icon">🩺</span>
+      <div class="card-title">Pharmacology III</div>
+      <div class="card-desc">Advanced pharmacology concepts including cardiovascular, renal, GI, immune system medications and clinical judgment.</div>
+      <div>
+        <span class="card-tag">NURS-0108</span>
+        <span class="card-tag">ADN Program</span>
+      </div>
+      <div class="card-arrow">Go to course →</div>
+    </a>
+
+    <a href="nurs0243.html" class="card fade-up fade-up-3">
+      <span class="card-icon">🧠</span>
+      <div class="card-title">Complex Nursing Concepts</div>
+      <div class="card-desc">Medical-surgical nursing for complex patients — acid-base, elimination, digestion, gas exchange, and more.</div>
+      <div>
+        <span class="card-tag">NURS-0243</span>
+        <span class="card-tag">ADN Program</span>
+      </div>
+      <div class="card-arrow">Go to course →</div>
+    </a>
+
+    <a href="nupn0200.html" class="card fade-up fade-up-4">
+      <span class="card-icon">⚖️</span>
+      <div class="card-title">Clinical Judgment</div>
+      <div class="card-desc">Developing clinical judgment using the NCSBN Clinical Judgment Measurement Model (CJMM) and NGN-style practice.</div>
+      <div>
+        <span class="card-tag">NUPN-0200</span>
+        <span class="card-tag">PN Program</span>
+      </div>
+      <div class="card-arrow">Go to course →</div>
+    </a>
+  </div>
+</section>
+
+<!-- STUDY TOOLS -->
+<section class="section" style="padding-top:0">
+  <div class="section-label">Interactive Learning</div>
+  <h2 class="section-title">Free Study Tools</h2>
+  <p class="section-sub">Click-to-learn interactive tools built specifically for nursing students. No login, no download, no cost.</p>
+
+  <div class="resource-list">
+    <a href="BloodType_Compatibility.html" class="resource-item" style="border-left-color:#b91c1c">
+      <div class="resource-icon">🩸</div>
+      <div>
+        <div class="resource-title">Blood Type Compatibility Tool</div>
+        <div class="resource-desc">Interactive compatibility chart + mnemonics to finally master ABO and Rh types</div>
+      </div>
+    </a>
+    <div class="resource-item" style="border-left-color:#6d28d9; opacity:0.6; cursor:default">
+      <div class="resource-icon">💊</div>
+      <div>
+        <div class="resource-title">Pharmacology Drug Class Flashcards</div>
+        <div class="resource-desc">Coming soon — check back!</div>
+      </div>
+    </div>
+    <div class="resource-item" style="border-left-color:#0A8A7A; opacity:0.6; cursor:default">
+      <div class="resource-icon">🔬</div>
+      <div>
+        <div class="resource-title">Lab Values Quick Reference</div>
+        <div class="resource-desc">Coming soon — check back!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- YOUTUBE STRIP -->
+<div class="youtube-strip">
+  <div class="yt-inner">
+    <div>
+      <span class="yt-icon">▶️</span>
+      <div class="yt-title">Video Lessons on YouTube</div>
+      <p class="yt-desc">
+        Supplemental video lectures, concept reviews, and NCLEX tips posted regularly on my YouTube channel. Watch on your own time, rewatch as many times as you need.
+      </p>
+    </div>
+    <a href="https://youtube.com" target="_blank" class="btn-youtube">
+      ▶ Visit My Channel
+    </a>
+  </div>
+</div>
+
+<!-- ENCOURAGEMENT -->
+<div class="encourage-banner">
+  <h2>You Belong in This Profession. 💙</h2>
+  <p>Nursing school is hard — that's not a bug, it's the point. Every concept you master, every patient you help, every exam you pass is proof that you're becoming the nurse someone needs.</p>
+</div>
+
+<!-- ABOUT PREVIEW -->
+<div class="about-strip">
+  <div class="about-inner">
+    <div class="about-avatar">👩‍⚕️</div>
+    <div>
+      <div class="about-name">Hallie Stephen-Castro</div>
+      <div class="about-creds">MSN · MBA · RN · Nursing Faculty since 2013</div>
+      <p class="about-bio">
+        With over 25 years of nursing experience and more than a decade in the classroom, I'm passionate about making complex nursing concepts accessible, memorable, and clinically meaningful. This site exists because you deserve resources that meet you where you are.
+      </p>
+      <div class="contact-pills">
+        <a href="mailto:hstephencastro@kckcc.edu" class="contact-pill">✉️ hstephencastro@kckcc.edu</a>
+        <a href="about.html" class="contact-pill">📖 Full Bio →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Professor Castro's Nursing Student Hub &nbsp;·&nbsp; Kansas City Kansas Community College</p>
+  <p>Room 3715 &nbsp;·&nbsp; <a href="mailto:hstephencastro@kckcc.edu">hstephencastro@kckcc.edu</a> &nbsp;·&nbsp; 913-288-7352</p>
+  <p style="margin-top:8px; font-size:11px">Built with ❤️ for nursing students everywhere.</p>
+</footer>
+
+<script>
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>

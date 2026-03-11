@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NURS-0106 Pharmacology I – Professor Castro</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .page-hero { background: linear-gradient(135deg, #0D2144 0%, #0A4A3A 100%); }
+  .course-badge { display:inline-block; background:rgba(10,138,122,0.3); border:1px solid rgba(10,184,159,0.4); color:#0FB89F; font-size:11px; font-weight:800; letter-spacing:2px; padding:4px 14px; border-radius:20px; margin-bottom:14px; }
+  .accent { color: var(--teal); }
+  .week-item.open .week-header { background: #EFF8F6; }
+  .week-num { background: var(--teal); }
+  .tip-box { background:#EFF8F6; border-left:4px solid var(--teal); border-radius:0 12px 12px 0; padding:16px 20px; margin-top:24px; }
+  .tip-box-title { font-weight:800; color:var(--teal); font-size:13px; margin-bottom:5px; }
+  .tip-box-text { color:#2D6A5A; font-size:13.5px; line-height:1.6; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Professor Castro's <span>Nursing Hub</span></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="nurs0106.html" class="active">NURS-0106</a>
+    <a href="nurs0108.html">NURS-0108</a>
+    <a href="nurs0243.html">NURS-0243</a>
+    <a href="nupn0200.html">NUPN-0200</a>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="course-badge">NURS-0106 · ADN Program</div>
+  <h1>Pharmacology I</h1>
+  <p>Foundations of drug therapy — from pharmacokinetics to clinical application</p>
+</div>
+
+<section class="section">
+  <div style="display:grid; grid-template-columns:1fr 320px; gap:40px; align-items:start;" class="course-layout">
+
+    <!-- MAIN CONTENT -->
+    <div>
+      <div class="section-label">Course Overview</div>
+      <h2 class="section-title" style="margin-bottom:12px">What You'll Learn</h2>
+      <p style="color:var(--warm-gray); font-size:14.5px; line-height:1.75; margin-bottom:28px;">
+        Pharmacology I introduces the foundational principles of drug therapy for nursing practice. You'll develop the clinical judgment skills needed to safely administer medications, anticipate drug effects, and educate patients — using the CJMM framework throughout.
+      </p>
+
+      <div class="section-label">Weekly Materials</div>
+      <h2 class="section-title" style="margin-bottom:20px">Resources by Week</h2>
+      <p style="color:var(--warm-gray); font-size:13.5px; margin-bottom:20px;">Click any week to expand its materials. New content added as the semester progresses.</p>
+
+      <div class="week-list">
+
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <span class="week-num">WK 1</span>
+              Pharmacokinetics & Pharmacodynamics
+            </div>
+            <span class="week-chevron">⌄</span>
+          </div>
+          <div class="week-body">
+            <p style="font-size:13.5px; color:var(--warm-gray); line-height:1.6;">Drug absorption, distribution, metabolism, excretion — and how drug-receptor interactions produce therapeutic effects.</p>
+            <div class="week-resources">
+              <div class="week-resource" style="opacity:0.5; cursor:default">
+                <span class="week-resource-icon">📄</span> Lecture Slides — coming soon
+              </div>
+              <div class="week-resource" style="opacity:0.5; cursor:default">
+                <span class="week-resource-icon">📝</span> Study Guide — coming soon
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <span class="week-num">WK 2</span>
+              Diuretics
+            </div>
+            <span class="week-chevron">⌄</span>
+          </div>
+          <div class="week-body">
+            <p style="font-size:13.5px; color:var(--warm-gray); line-height:1.6;">Loop diuretics, thiazides, and potassium-sparing agents — mechanisms, clinical uses, nursing priorities, and electrolyte monitoring.</p>
+            <div class="week-resources">
+              <div class="week-resource" style="opacity:0.5; cursor:default">
+                <span class="week-resource-icon">📄</span> Lecture Slides — coming soon
+              </div>
+              <div class="week-resource" style="opacity:0.5; cursor:default">
+                <span class="week-resource-icon">🔢</span> Dosage Calculation Practice — coming soon
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <span class="week-num">WK 3</span>
+              Renal & IV Fluids (Ch. 50–51)
+            </div>
+            <span class="week-chevron">⌄</span>
+          </div>
+          <div class="week-body">
+            <p style="font-size:13.5px; color:var(--warm-gray); line-height:1.6;">Fluid management, isotonic/hypotonic/hypertonic solutions, and renal drug considerations.</p>
+            <div class="week-resources">
+              <div class="week-resource" style="opacity:0.5; cursor:default">
+                <span class="week-resource-icon">📄</span> Lecture Slides — coming soon
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <span class="week-num">WK 4</span>
+              Antibiotics — Cephalosporins, Fluoroquinolones, Sulfonamides
+            </div>
+            <span class="week-chevron">⌄</span>
+          </div>
+          <div class="week-body">
+            <p style="font-size:13.5px; color:var(--warm-gray); line-height:1.6;">The 3×3 Framework — Top 3 Concerns + Top 3 Nursing Implications for each major antibiotic class. Mechanisms, spectrums, safety considerations.</p>
+            <div class="week-resources">
+              <div class="week-resource" style="opacity:0.5; cursor:default">
+                <span class="week-resource-icon">📄</span> Week 7 Antibiotic Presentation — coming soon
+              </div>
+              <div class="week-resource" style="opacity:0.5; cursor:default">
+                <span class="week-resource-icon">📝</span> 3×3 Framework Study Sheet — coming soon
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="week-item">
+          <div class="week-header" onclick="toggleWeek(this)">
+            <div class="week-header-left">
+              <span class="week-num">WK 5</span>
+              Dysrhythmia Medications
+            </div>
+            <span class="week-chevron">⌄</span>
+          </div>
+          <div class="week-body">
+            <p style="font-size:13.5px; color:var(--warm-gray); line-height:1.6;">Antiarrhythmic drug classes, cardiac glycosides, and rate-control medications — when they're used and what to watch for.</p>
+            <div class="week-resources">
+              <div class="week-resource" style="opacity:0.5; cursor:default">
+                <span class="week-resource-icon">📄</span> Slides — coming soon
+              </div>
+              <div class="week-resource" style="opacity:0.5; cursor:default">
+                <span class="week-resource-icon">✏️</span> Homework Activity — coming soon
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end week-list -->
+
+      <div class="tip-box">
+        <div class="tip-box-title">💡 Professor Castro's Study Tip</div>
+        <div class="tip-box-text">Don't try to memorize every drug name — focus on the <strong>drug CLASS</strong>. If you know how loop diuretics work, you know how furosemide, bumetanide, and torsemide all work. Same goes for antibiotics, beta-blockers, ACE inhibitors. Learn the class, the rest follows.</div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div>
+      <div style="background:var(--white); border-radius:16px; padding:24px; box-shadow:var(--card-shadow); margin-bottom:20px;">
+        <div style="font-size:12px; font-weight:800; color:var(--teal); letter-spacing:1.5px; margin-bottom:14px;">COURSE INFO</div>
+        <div style="display:grid; gap:12px; font-size:13.5px;">
+          <div><span style="color:var(--warm-gray);">Course:</span> <strong>NURS-0106</strong></div>
+          <div><span style="color:var(--warm-gray);">Program:</span> <strong>ADN — Nursing</strong></div>
+          <div><span style="color:var(--warm-gray);">Instructor:</span> <strong>Prof. Castro</strong></div>
+          <div><span style="color:var(--warm-gray);">Location:</span> <strong>Room 3715, KCKCC</strong></div>
+          <div><span style="color:var(--warm-gray);">Email:</span> <a href="mailto:hstephencastro@kckcc.edu" style="color:var(--teal); font-weight:700;">hstephencastro@kckcc.edu</a></div>
+        </div>
+      </div>
+
+      <div style="background:var(--navy); border-radius:16px; padding:24px; color:var(--white);">
+        <div style="font-size:12px; font-weight:800; color:var(--gold); letter-spacing:1.5px; margin-bottom:14px;">NEED HELP?</div>
+        <p style="font-size:13.5px; color:#A8C0D6; line-height:1.7; margin-bottom:16px;">Office hours are posted in Blackboard. You can also email anytime — I try to respond within 24 hours.</p>
+        <a href="mailto:hstephencastro@kckcc.edu" class="btn-primary" style="width:100%; text-align:center; display:block; box-sizing:border-box;">✉️ Email Professor Castro</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="encourage-banner">
+  <h2>Pharmacology is Learnable. I Promise. 💊</h2>
+  <p>Every nurse felt overwhelmed by drug names at first. Focus on the concepts behind the drugs and the rest falls into place.</p>
+</div>
+
+<footer>
+  <p>Professor Castro's Nursing Student Hub &nbsp;·&nbsp; Kansas City Kansas Community College</p>
+  <p>Room 3715 &nbsp;·&nbsp; <a href="mailto:hstephencastro@kckcc.edu">hstephencastro@kckcc.edu</a> &nbsp;·&nbsp; 913-288-7352</p>
+</footer>
+
+<script>
+function toggleWeek(header) {
+  const item = header.parentElement;
+  item.classList.toggle('open');
+}
+// Make course layout responsive
+const layout = document.querySelector('.course-layout');
+if (layout && window.innerWidth < 900) {
+  layout.style.gridTemplateColumns = '1fr';
+}
+window.addEventListener('resize', () => {
+  if (layout) layout.style.gridTemplateColumns = window.innerWidth < 900 ? '1fr' : '1fr 320px';
+});
+</script>
+</body>
+</html>

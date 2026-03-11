@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Type Compatibility – NURS-0243</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f1724; min-height: 100vh; padding: 20px 14px; color: #e2e8f0; }
+
+  .header { text-align: center; margin-bottom: 22px; }
+  .badge { display: inline-block; background: linear-gradient(135deg,#b91c1c,#6d28d9); border-radius: 8px; padding: 3px 14px; font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #fff; margin-bottom: 8px; }
+  h1 { font-size: 24px; font-weight: 800; margin-bottom: 4px; background: linear-gradient(90deg,#f87171,#c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: #64748b; font-size: 12px; }
+
+  .tabs { display: flex; justify-content: center; gap: 6px; margin-bottom: 20px; flex-wrap: wrap; }
+  .tab-btn { padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer; font-size: 12px; font-weight: 600; background: #1e2d3d; color: #64748b; transition: all 0.2s; }
+  .tab-btn.active { background: #6d28d9; color: #fff; }
+
+  .panel { display: none; max-width: 680px; margin: 0 auto; }
+  .panel.active { display: block; }
+
+  /* Blood type grid */
+  .type-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 16px; }
+  .type-btn { border-radius: 12px; padding: 12px 6px; cursor: pointer; border: 2px solid #1e2d3d; background: #1a2535; color: #94a3b8; transition: all 0.2s; text-align: center; font-weight: 700; font-family: inherit; }
+  .type-btn:hover { border-color: #334155; color: #cbd5e1; }
+  .type-btn .emoji { font-size: 20px; }
+  .type-btn .label { font-size: 16px; margin-top: 3px; }
+  .type-btn .nickname { font-size: 9px; font-weight: 500; opacity: 0.75; margin-top: 2px; line-height: 1.2; }
+
+  /* Result panel */
+  .result-box { background: #1a2535; border-radius: 14px; padding: 18px; }
+  .result-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .result-emoji { font-size: 28px; }
+  .result-name { font-size: 22px; font-weight: 800; }
+  .result-nick { font-size: 11px; color: #64748b; }
+  .compat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+  .compat-card { background: #0f1724; border-radius: 10px; padding: 12px; }
+  .compat-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .tag-green { background: #166534; color: #bbf7d0; border-radius: 6px; padding: 3px 8px; font-size: 12px; font-weight: 700; }
+  .tag-blue { background: #1e3a5f; color: #93c5fd; border-radius: 6px; padding: 3px 8px; font-size: 12px; font-weight: 700; }
+  .memory-box { border-radius: 10px; padding: 12px; }
+  .memory-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 5px; }
+  .memory-text { font-size: 13px; color: #334155; line-height: 1.6; }
+
+  /* Default (no selection) */
+  .default-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .default-card { background: #1a2535; border-radius: 12px; padding: 14px; }
+  .default-type-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 6px; }
+  .default-type-name { font-size: 26px; font-weight: 800; }
+  .default-desc { font-size: 12px; color: #64748b; margin-top: 6px; line-height: 1.5; }
+
+  /* Mnemonics */
+  .mnemonic-list { display: grid; gap: 12px; }
+  .mnemonic-card { background: #1a2535; border-radius: 14px; padding: 16px; display: flex; gap: 12px; align-items: flex-start; }
+  .mnemonic-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+  .mnemonic-title { font-size: 13px; font-weight: 800; margin-bottom: 5px; }
+  .mnemonic-text { color: #cbd5e1; font-size: 13px; line-height: 1.7; }
+  .rh-box { background: #1a2535; border-radius: 14px; padding: 16px; border: 1px solid #334155; margin-top: 12px; }
+  .rh-title { font-size: 12px; font-weight: 800; color: #f59e0b; margin-bottom: 12px; }
+  .rh-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .rh-card { background: #0f1724; border-radius: 10px; padding: 12px; }
+  .rh-card-title { font-weight: 700; font-size: 12px; margin-bottom: 5px; }
+  .rh-card-text { color: #94a3b8; font-size: 12px; line-height: 1.7; }
+
+  /* Matrix */
+  .matrix-box { background: #1a2535; border-radius: 14px; padding: 16px; overflow-x: auto; }
+  .matrix-hint { font-size: 11px; color: #64748b; margin-bottom: 10px; letter-spacing: 1px; font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  th { padding: 8px 5px; text-align: center; font-weight: 800; border-bottom: 1px solid #334155; font-size: 12px; }
+  th.row-header { text-align: left; padding: 8px 8px; color: #475569; font-size: 11px; }
+  td { padding: 9px 5px; text-align: center; }
+  td.row-label { padding: 9px 8px; font-weight: 800; text-align: left; }
+  tr:nth-child(odd) { background: #0f1724; }
+  .check { background: #166534; color: #bbf7d0; border-radius: 5px; padding: 2px 6px; font-weight: 700; }
+  .no-check { color: #1e2d3d; }
+  .patterns-box { background: #1a2535; border-radius: 14px; padding: 14px; margin-top: 12px; }
+  .patterns-title { font-size: 11px; font-weight: 700; color: #f59e0b; letter-spacing: 1px; margin-bottom: 10px; }
+  .pattern-row { display: flex; gap: 8px; font-size: 12px; margin-bottom: 5px; }
+  .pattern-key { color: #6d28d9; font-weight: 700; min-width: 95px; flex-shrink: 0; }
+  .pattern-val { color: #64748b; }
+
+  .footer { text-align: center; margin-top: 22px; color: #1e2d3d; font-size: 10px; }
+
+  @media (max-width: 500px) {
+    .type-grid { grid-template-columns: repeat(4,1fr); gap: 5px; }
+    .type-btn { padding: 10px 4px; }
+    .type-btn .label { font-size: 13px; }
+    .compat-grid, .default-cards, .rh-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="badge">NURS-0243 · BLOOD TRANSFUSION THERAPY</div>
+  <h1>Blood Type Compatibility</h1>
+  <p class="subtitle">Click any blood type to explore compatibility · Use tabs to switch views</p>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('interactive')">🩸 Interactive</button>
+  <button class="tab-btn" onclick="switchTab('mnemonics')">🧠 Mnemonics</button>
+  <button class="tab-btn" onclick="switchTab('matrix')">📊 Full Matrix</button>
+</div>
+
+<!-- ═══ INTERACTIVE ═══ -->
+<div id="tab-interactive" class="panel active">
+  <div class="type-grid" id="typeGrid"></div>
+  <div id="resultArea"></div>
+</div>
+
+<!-- ═══ MNEMONICS ═══ -->
+<div id="tab-mnemonics" class="panel">
+  <div class="mnemonic-list">
+    <div class="mnemonic-card" style="border-left:4px solid #b91c1c">
+      <div class="mnemonic-icon">0️⃣</div>
+      <div>
+        <div class="mnemonic-title" style="color:#b91c1c">O = Zero</div>
+        <div class="mnemonic-text">Think of "O" as the number <strong>ZERO</strong>. Zero antigens on the cell surface = zero reasons to reject it. That's why O− is the <strong>universal donor</strong> — no antigens to trigger a reaction in any recipient. BUT: O blood has antibodies against A AND B, so it can only accept O blood. It gives freely but is very picky about what it receives.</div>
+      </div>
+    </div>
+    <div class="mnemonic-card" style="border-left:4px solid #1d4ed8">
+      <div class="mnemonic-icon">➕</div>
+      <div>
+        <div class="mnemonic-title" style="color:#1d4ed8">Positive = Permissive, Negative = Picky</div>
+        <div class="mnemonic-text">Rh <strong>POSITIVE</strong> patients are <strong>PERMISSIVE</strong> — they accept either positive OR negative blood, no questions asked. Rh <strong>NEGATIVE</strong> patients are <strong>PICKY</strong> — they REFUSE positive blood. If an Rh− patient receives Rh+ blood, the body builds antibodies (sensitization). This is especially critical for pregnant women!</div>
+      </div>
+    </div>
+    <div class="mnemonic-card" style="border-left:4px solid #6d28d9">
+      <div class="mnemonic-icon">👑</div>
+      <div>
+        <div class="mnemonic-title" style="color:#6d28d9">AB = Accepts Both</div>
+        <div class="mnemonic-text">AB literally <strong>ACCEPTS BOTH</strong> A and B antigens on its own cells — so it never makes antibodies against either. That's what makes AB the <strong>universal recipient</strong>. The catch: AB can only <strong>DONATE</strong> to other AB people (too many antigens for anyone else to tolerate).</div>
+      </div>
+    </div>
+    <div class="mnemonic-card" style="border-left:4px solid #0f766e">
+      <div class="mnemonic-icon">📺</div>
+      <div>
+        <div class="mnemonic-title" style="color:#0f766e">The House / Wilson Rule</div>
+        <div class="mnemonic-text">From the TV show <em>House MD</em>: Wilson tells House <em>"You're AB — universal recipient, you TAKE from everybody."</em> House replies: <em>"You're O — universal donor. No wonder you're always giving."</em> House takes, Wilson gives. Remember the characters, remember the types!</div>
+      </div>
+    </div>
+    <div class="mnemonic-card" style="border-left:4px solid #166534">
+      <div class="mnemonic-icon">🔤</div>
+      <div>
+        <div class="mnemonic-title" style="color:#166534">Same Letter + O Rule</div>
+        <div class="mnemonic-text">Recipients can always receive their <strong>own type PLUS type O</strong>. Type A → accepts A or O. Type B → accepts B or O. Type AB → accepts AB, A, B, or O (everyone!). Type O → accepts ONLY O. Quick check: does the donor letter match the recipient's letter, or is it O?</div>
+      </div>
+    </div>
+    <div class="mnemonic-card" style="border-left:4px solid #c2410c">
+      <div class="mnemonic-icon">🤰</div>
+      <div>
+        <div class="mnemonic-title" style="color:#c2410c">Rh− Women → RhoGAM</div>
+        <div class="mnemonic-text">An Rh− mother carrying an Rh+ baby MUST receive <strong>RhoGAM</strong> to prevent sensitization. If her blood mixes with the baby's (at delivery or miscarriage), she forms anti-Rh antibodies — and those antibodies will attack future Rh+ pregnancies. RhoGAM neutralizes the threat before antibodies form.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rh-box">
+    <div class="rh-title">⚡ RH FACTOR: THE ONE RULE TO REMEMBER</div>
+    <div class="rh-grid">
+      <div class="rh-card">
+        <div class="rh-card-title" style="color:#22c55e">Rh+ = PERMISSIVE</div>
+        <div class="rh-card-text">✅ Accepts Rh+ blood<br>✅ Accepts Rh− blood<br><em>"Positive takes both"</em></div>
+      </div>
+      <div class="rh-card">
+        <div class="rh-card-title" style="color:#f87171">Rh− = PICKY</div>
+        <div class="rh-card-text">✅ Accepts Rh− blood<br>❌ Rejects Rh+ blood<br><em>"Negative rejects positive"</em></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MATRIX ═══ -->
+<div id="tab-matrix" class="panel">
+  <div class="matrix-box">
+    <div class="matrix-hint">ROWS = Recipient &nbsp;|&nbsp; COLUMNS = Donor &nbsp;|&nbsp; ✓ = Compatible</div>
+    <table id="matrixTable"></table>
+  </div>
+  <div class="patterns-box">
+    <div class="patterns-title">💡 SPOT THE PATTERNS — DON'T MEMORIZE EVERY CELL</div>
+    <div class="pattern-row"><span class="pattern-key">O− column:</span><span class="pattern-val">All ✓ — it's the universal donor, gives to everyone</span></div>
+    <div class="pattern-row"><span class="pattern-key">AB+ row:</span><span class="pattern-val">All ✓ — it's the universal recipient, accepts from everyone</span></div>
+    <div class="pattern-row"><span class="pattern-key">The diagonal:</span><span class="pattern-val">Always compatible — same type always works</span></div>
+    <div class="pattern-row"><span class="pattern-key">Rh− rows:</span><span class="pattern-val">Check marks ONLY in Rh− donor columns</span></div>
+    <div class="pattern-row"><span class="pattern-key">O rows:</span><span class="pattern-val">Only O types appear in the "can receive" column</span></div>
+  </div>
+</div>
+
+<div class="footer">NURS-0243 · Hallie Stephen-Castro, MSN, MBA, RN · KCKCC</div>
+
+<script>
+const bloodData = {
+  "O−":  { color:"#b91c1c", light:"#fef2f2", border:"#fca5a5", emoji:"🌍", nickname:"Universal Donor",
+            donate:["O−","O+","A−","A+","B−","B+","AB−","AB+"], receive:["O−"],
+            tip:"O = ZERO antigens. Zero barriers. Gives to EVERYONE — but is picky receiving. Only takes O−." },
+  "O+":  { color:"#c2410c", light:"#fff7ed", border:"#fdba74", emoji:"⭐", nickname:"Most Common (~38%)",
+            donate:["O+","A+","B+","AB+"], receive:["O−","O+"],
+            tip:"Most common type. Gives to all POSITIVE types. Receives from both O types (O− and O+)." },
+  "A−":  { color:"#1d4ed8", light:"#eff6ff", border:"#93c5fd", emoji:"🅰️", nickname:"Rare A",
+            donate:["A−","A+","AB−","AB+"], receive:["O−","A−"],
+            tip:"A types give to A and AB — AB needs the A antigen. The minus means only negative recipients get it." },
+  "A+":  { color:"#1e40af", light:"#eff6ff", border:"#93c5fd", emoji:"🅰️", nickname:"Common A",
+            donate:["A+","AB+"], receive:["O−","O+","A−","A+"],
+            tip:"A+ receives from all A and O types. Donates only to A+ and AB+ (positive recipients only)." },
+  "B−":  { color:"#15803d", light:"#f0fdf4", border:"#86efac", emoji:"🅱️", nickname:"Rare B",
+            donate:["B−","B+","AB−","AB+"], receive:["O−","B−"],
+            tip:"B types give to B and AB — AB needs the B antigen. The minus means only negative recipients get it." },
+  "B+":  { color:"#166534", light:"#f0fdf4", border:"#86efac", emoji:"🅱️", nickname:"Common B",
+            donate:["B+","AB+"], receive:["O−","O+","B−","B+"],
+            tip:"B+ receives from all B and O types. Donates only to B+ and AB+ (positive recipients only)." },
+  "AB−": { color:"#6d28d9", light:"#faf5ff", border:"#c4b5fd", emoji:"💜", nickname:"Universal Plasma Donor",
+            donate:["AB−","AB+"], receive:["O−","A−","B−","AB−"],
+            tip:"AB− donates PLASMA to everyone (universal plasma donor) but red cells only to AB types." },
+  "AB+": { color:"#4c1d95", light:"#faf5ff", border:"#c4b5fd", emoji:"👑", nickname:"Universal Recipient",
+            donate:["AB+"], receive:["O−","O+","A−","A+","B−","B+","AB−","AB+"],
+            tip:"Universal Recipient. Has ALL antigens so makes NO antibodies against foreign blood. Accepts from EVERYONE." },
+};
+
+const allTypes = ["O−","O+","A−","A+","B−","B+","AB−","AB+"];
+let selectedType = null;
+
+// Build type buttons
+const grid = document.getElementById("typeGrid");
+allTypes.forEach(t => {
+  const d = bloodData[t];
+  const btn = document.createElement("button");
+  btn.className = "type-btn";
+  btn.id = "btn-" + t.replace("+","p").replace("−","m");
+  btn.innerHTML = `<div class="emoji">${d.emoji}</div><div class="label">${t}</div><div class="nickname">${d.nickname}</div>`;
+  btn.onclick = () => selectType(t);
+  grid.appendChild(btn);
+});
+
+function selectType(t) {
+  selectedType = selectedType === t ? null : t;
+  updateButtons();
+  renderResult();
+}
+
+function updateButtons() {
+  allTypes.forEach(t => {
+    const id = "btn-" + t.replace("+","p").replace("−","m");
+    const btn = document.getElementById(id);
+    const d = bloodData[t];
+    btn.style.cssText = "";
+    if (selectedType === t) {
+      btn.style.background = d.color;
+      btn.style.color = "#fff";
+      btn.style.border = `2px solid ${d.color}`;
+      btn.style.transform = "scale(1.07)";
+    } else if (selectedType && (bloodData[selectedType].donate.includes(t) || bloodData[selectedType].receive.includes(t))) {
+      btn.style.background = d.light;
+      btn.style.color = d.color;
+      btn.style.border = `2px solid ${d.color}`;
+      btn.style.transform = "scale(1.03)";
+    } else {
+      btn.style.background = "#1a2535";
+      btn.style.color = "#94a3b8";
+      btn.style.border = "2px solid #1e2d3d";
+    }
+  });
+}
+
+function renderResult() {
+  const area = document.getElementById("resultArea");
+  if (!selectedType) {
+    area.innerHTML = `
+      <div class="default-cards">
+        <div class="default-card" style="border-left:4px solid #b91c1c">
+          <div class="default-type-label" style="color:#f87171">🌍 UNIVERSAL DONOR</div>
+          <div class="default-type-name">O−</div>
+          <div class="default-desc">Zero antigens → gives to everyone. Receives only O−.</div>
+        </div>
+        <div class="default-card" style="border-left:4px solid #6d28d9">
+          <div class="default-type-label" style="color:#c084fc">👑 UNIVERSAL RECIPIENT</div>
+          <div class="default-type-name">AB+</div>
+          <div class="default-desc">All antigens → no antibodies → accepts from everyone.</div>
+        </div>
+      </div>`;
+    return;
+  }
+  const d = bloodData[selectedType];
+  const donateTags = d.donate.map(t => `<span class="tag-green">${t}</span>`).join("");
+  const receiveTags = d.receive.map(t => `<span class="tag-blue">${t}</span>`).join("");
+  area.innerHTML = `
+    <div class="result-box" style="border:1px solid ${d.border}">
+      <div class="result-header">
+        <div class="result-emoji">${d.emoji}</div>
+        <div>
+          <div class="result-name" style="color:${d.color}">${selectedType}</div>
+          <div class="result-nick">${d.nickname}</div>
+        </div>
+      </div>
+      <div class="compat-grid">
+        <div class="compat-card">
+          <div class="compat-label" style="color:#22c55e">📤 CAN DONATE TO</div>
+          <div class="tags">${donateTags}</div>
+        </div>
+        <div class="compat-card">
+          <div class="compat-label" style="color:#3b82f6">📥 CAN RECEIVE FROM</div>
+          <div class="tags">${receiveTags}</div>
+        </div>
+      </div>
+      <div class="memory-box" style="background:${d.light}; border-left:4px solid ${d.color}">
+        <div class="memory-label" style="color:${d.color}">🧠 MEMORY TIP</div>
+        <div class="memory-text">${d.tip}</div>
+      </div>
+    </div>`;
+}
+
+// Build matrix
+function buildMatrix() {
+  const table = document.getElementById("matrixTable");
+  let html = "<thead><tr><th class='row-header'>Recipient ↓ / Donor →</th>";
+  allTypes.forEach(t => {
+    html += `<th style="color:${bloodData[t].color}">${t}</th>`;
+  });
+  html += "</tr></thead><tbody>";
+  allTypes.forEach((recipient, ri) => {
+    html += `<tr><td class="row-label" style="color:${bloodData[recipient].color}">${recipient}</td>`;
+    allTypes.forEach(donor => {
+      const ok = bloodData[recipient].receive.includes(donor);
+      html += `<td>${ok ? '<span class="check">✓</span>' : '<span class="no-check">—</span>'}</td>`;
+    });
+    html += "</tr>";
+  });
+  html += "</tbody>";
+  table.innerHTML = html;
+}
+buildMatrix();
+
+function switchTab(id) {
+  document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  document.getElementById("tab-" + id).classList.add("active");
+  event.target.classList.add("active");
+}
+
+// Show default result on load
+renderResult();
+</script>
+</body>
+</html>
